@@ -103,6 +103,8 @@ const authController = {
     res.json({
       ok: true,
       token,
+      uid,
+      name,
     });
   },
 };

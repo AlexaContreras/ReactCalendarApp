@@ -10,7 +10,7 @@ const fieldsValidate = (req, res = response, next) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({
       ok: false,
-      errrors: errors.mapped(),
+      errors: errors.mapped(),
     });
   }
 
