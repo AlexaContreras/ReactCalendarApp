@@ -79,30 +79,26 @@ const eventController = {
   deleteEvent: async (req, res) => {
     const eventId = req.params.id;
     const uid = req.uid;
-
     try {
       const event = await Event.findById(eventId);
 
       if (!event) {
         return res.status(404).json({
           ok: false,
-          msg: `There is no event assigned to this id ${eventId}`,
+          msg: 'There in no event with this id',
         });
       }
 
       if (event.user.toString() !== uid) {
         return res.status(401).json({
           ok: false,
-          msg: `This user is not authorized to make changes`,
+          msg: 'This user in not authorized to make changes',
         });
       }
 
-      await Event.findOneAndDelete(eventId);
+      await Event.findByIdAndDelete(eventId);
 
-      res.json({
-        ok: true,
-        message: `The event with the id ${eventId} has been deleted`,
-      });
+      res.json({ ok: true });
     } catch (error) {
       console.log(error);
       return res.status(500).json({
