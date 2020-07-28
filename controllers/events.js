@@ -85,7 +85,7 @@ const eventController = {
       if (!event) {
         return res.status(404).json({
           ok: false,
-          msg: 'There in no event with this id',
+          msg: 'There is no event with this id',
         });
       }
 
